@@ -1,0 +1,20 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname recursion1) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+
+(define (collatz-next sk)
+  (cond
+    [(even? sk) (/ sk 2)]
+    [else (+ (* 3 sk) 1)]
+    )
+  )
+
+;;(collatz-next 3)
+;;(collatz-next 12)
+
+(define (collatz-seq sk)
+  (cond
+    [(= sk 1) '(1)]
+    [else (cons sk (collatz-seq (collatz-next sk)))]))
+
+(collatz-seq 5)
